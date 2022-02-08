@@ -14,13 +14,13 @@
 
     <modules>
         <module>docs</module>
-        <module>metrics-bom</module>
+       <!-- <module>metrics-bom</module>
         <module>metrics-annotation</module>
         <module>metrics-benchmarks</module>
         <module>metrics-caffeine</module>
-        <module>metrics-caffeine3</module>
+        <module>metrics-caffeine3</module>-->
         <module>metrics-core</module>
-        <module>metrics-collectd</module>
+       <!-- <module>metrics-collectd</module>
         <module>metrics-ehcache</module>
         <module>metrics-graphite</module>
         <module>metrics-influxdb</module>
@@ -44,10 +44,10 @@
         <module>metrics-logback</module>
         <module>metrics-servlet</module>
         <module>metrics-servlets</module>
-        <module>metrics-jcstress</module>
+        <module>metrics-jcstress</module>-->
         <module>metrics-jmx</module>
-        <module>metrics-legacy-adapter</module>
-        <module>metrics-legacy-adapter-healthchecks</module>
+       <!-- <module>metrics-legacy-adapter</module>
+        <module>metrics-legacy-adapter-healthchecks</module>-->
     </modules>
 
     <properties>
@@ -74,7 +74,7 @@
         <sonar.moduleKey>${project.artifactId}</sonar.moduleKey>
     </properties>
 
-    <developers>
+   <!-- <developers>
         <developer>
             <name>Coda Hale</name>
             <email>coda.hale@gmail.com</email>
@@ -132,6 +132,17 @@
             <name>Nexus Release Repository</name>
             <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
+    </distributionManagement>-->
+
+    <distributionManagement>
+        <repository>
+            <id>deployRelease</id>
+            <url>http://10.65.241.21:8081/content/repositories/releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>deploySnapshot</id>
+            <url>http://10.65.241.21:8081/content/repositories/snapshots/</url>
+        </snapshotRepository>
     </distributionManagement>
 
     <profiles>
@@ -155,7 +166,7 @@
                             <target>1.8</target>
                             <fork>true</fork>
                             <compilerArgs combine.children="append">
-                                <arg>-XepExcludedPaths:.*/target/generated-sources/.*</arg>
+                               <!-- <arg>-XepExcludedPaths:.*/target/generated-sources/.*</arg>-->
                                 <arg>-J-Xbootclasspath/p:${settings.localRepository}/com/google/errorprone/javac/${errorprone.javac.version}/javac-${errorprone.javac.version}.jar</arg>
                             </compilerArgs>
                         </configuration>
@@ -303,7 +314,7 @@
                             </execution>
                         </executions>
                     </plugin>
-                    <plugin>
+                <!--    <plugin>
                         <groupId>org.sonatype.plugins</groupId>
                         <artifactId>nexus-staging-maven-plugin</artifactId>
                         <version>1.6.8</version>
@@ -321,7 +332,7 @@
                                 </goals>
                             </execution>
                         </executions>
-                    </plugin>
+                    </plugin>-->
                 </plugins>
             </build>
         </profile>
@@ -335,11 +346,11 @@
                     <artifactId>maven-compiler-plugin</artifactId>
                     <version>${maven-compiler-plugin.version}</version>
                 </plugin>
-                <plugin>
+                <!--<plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-deploy-plugin</artifactId>
                     <version>2.8.2</version>
-                </plugin>
+                </plugin>-->
             </plugins>
         </pluginManagement>
         <plugins>
